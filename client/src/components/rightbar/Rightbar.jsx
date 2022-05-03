@@ -6,17 +6,19 @@ import OnlineTravellers from '../../components/onlineTravellers/OnlineTravellers
 // Takes prop profile sent by profile page
 export default function Rightbar({profile}) {
 
+  const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
+
   const HomeRightBar = () => {
     return (
       <>
        <div className="birthday-container">
 
-      <img className='birthday-img' src="/assets/heart.png" alt="heart" />
+      <img className='birthday-img' src="heart.png" alt="heart" />
       <span className="birthday-txt"><b>Paul Cheney</b> and <b>3 others</b> have a birthday today</span>
 
       </div>
 
-      <img className='right-bar-ad' src="/assets/uvu-ad.jpg" alt="Ad for UVU" />
+      <img className='right-bar-ad' src="uvu-ad.jpg" alt="Ad for UVU" />
 
       <h4 className='right-bar-title'>Online Fellow Travellers</h4>
 
@@ -58,47 +60,47 @@ export default function Rightbar({profile}) {
           <div className="right-bar-followed-travellers">
 
             <div className="right-bar-following">
-              <img src="/assets/people/thor.png" alt="" className="right-bar-following-img" />
+              <img src={`${publicFolder}people/thor.png`} alt="" className="right-bar-following-img" />
               <span className="right-bar-following-name">Thor Anderson</span>
             </div>
 
             <div className="right-bar-following">
-              <img src="/assets/people/paul.jpg" alt="" className="right-bar-following-img" />
+              <img src={`${publicFolder}people/paul.jpg`} alt="" className="right-bar-following-img" />
               <span className="right-bar-following-name">Paul Cheney</span>
             </div>
 
             <div className="right-bar-following">
-              <img src="/assets/people/andrew.jpg" alt="" className="right-bar-following-img" />
+              <img src={`${publicFolder}people/andrew.jpg`} alt="" className="right-bar-following-img" />
               <span className="right-bar-following-name">Andrew Peterson</span>
             </div>
 
             <div className="right-bar-following">
-              <img src="/assets/people/person1.jpg" alt="" className="right-bar-following-img" />
+              <img src={`${publicFolder}people/danila.jpg`} alt="" className="right-bar-following-img" />
               <span className="right-bar-following-name">Danila Lubov</span>
             </div>
 
             <div className="right-bar-following">
-              <img src="/assets/people/raine.jpg" alt="" className="right-bar-following-img" />
+              <img src={`${publicFolder}people/raine.jpg`} alt="" className="right-bar-following-img" />
               <span className="right-bar-following-name">Raine Peterson</span>
             </div>
 
             <div className="right-bar-following">
-              <img src="/assets/people/person1.jpg" alt="" className="right-bar-following-img" />
+              <img src={`${publicFolder}people/moe.jpg`} alt="" className="right-bar-following-img" />
               <span className="right-bar-following-name">Moe Peterson</span>
             </div>
 
             <div className="right-bar-following">
-              <img src="/assets/people/person1.jpg" alt="" className="right-bar-following-img" />
+              <img src={`${publicFolder}people/lavina.jpg`} alt="" className="right-bar-following-img" />
               <span className="right-bar-following-name">Lavina Page</span>
             </div>
 
             <div className="right-bar-following">
-              <img src="/assets/people/person1.jpg" alt="" className="right-bar-following-img" />
+              <img src={`${publicFolder}people/echo.jpg`} alt="" className="right-bar-following-img" />
               <span className="right-bar-following-name">Echo Crawford</span>
             </div>
 
             <div className="right-bar-following">
-              <img src="/assets/people/person1.jpg" alt="" className="right-bar-following-img" />
+              <img src={`${publicFolder}people/zilla.jpg`} alt="" className="right-bar-following-img" />
               <span className="right-bar-following-name">Zilla Bowie</span>
             </div>
 
