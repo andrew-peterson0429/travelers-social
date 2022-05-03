@@ -89,9 +89,9 @@ router.get("/:id", async (req, res) => {
 });
 
 // Get timeline posts
-router.get("/timeline/all", async (req,res) => {
+router.get("/timeline/:userId", async (req,res) => {
     try {
-        const currentUser = await User.findById(req.body.userId);
+        const currentUser = await User.findById(req.params.userId);
         // Adds all posts from currentUser to array by their id
         const userPosts = await Post.find({ userId: currentUser._id });
         // Using promise because using map() to fetch all posts
@@ -103,7 +103,7 @@ router.get("/timeline/all", async (req,res) => {
             })
         );
         // Takes all friendsPosts and concats with userPosts
-        res.json(userPosts.concat(...friendPosts));
+        res.status(200).json(userPosts.concat(...friendPosts));
     } catch {
         // Respond with internal server error
         res.status(500).json(err);
