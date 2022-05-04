@@ -1,13 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './post.css';
 import { MoreVert } from "@mui/icons-material";
-import { Users } from "../../userData";
+import { LineAxisOutlined } from '@mui/icons-material';
+import axios from 'axios';
 
 export default function Post({ post }) {
 
-  const [like, setLike] = useState(post.likes)
-  const [isLiked, setIsLiked] = useState(false)
+  const [like, setLike] = useState(post.likes);
+  const [isLiked, setIsLiked] = useState(false);
+  // Set user to be empty object
+  const [user, setUser] = useState({});
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  useEffect( ()=> {
+    const fetchUser = async () => {
+      const res = await axios.get(`users/${post.userId}`);
+      //sets user from the responses data found in post
+      setUser(res.data)
+    };
+    fetchUser();
+    
+  }, [])
 
   // If it is already liked, minus 1, if not liked before plus 1. Sets isLiked to either true or false
   const likeHandler =() => {
@@ -22,9 +35,10 @@ export default function Post({ post }) {
         <div className="post-top">
 
           <div className="post-top-left">
-            <img className='post-profile-img' src={Users.filter(u => u.id === post.userId)[0].profilePicture} alt="Profile Picture" />
+            <img className='post-profile-img' src={user.profilePicture || publicFolder+"person/no-avatar.png"}
+             alt="Profile Picture" />
             {/* Filters user id to find actual user */}
-            <span className='post-user-name'>{Users.filter(u => u.id === post.userId)[0].username}</span>
+            <span className='post-user-name'>{user.username}</span>
             <span className='post-date'>{post.date}</span>
           </div>
 

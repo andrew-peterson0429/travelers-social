@@ -10,27 +10,29 @@ import axios from 'axios';
 export default function Feed() {
 
   // Setting initial state as empty array
-  const [posts, setPosts] = useState([])
-
+  const [posts, setPosts] = useState([]);
 
   // when pages is renders, load data with dependancy on loading only once
   // after request gives response that is set to variable
   useEffect( ()=> {
     const fetchPosts = async () => {
-      const res = await axios.get("posts/timeline/all");
+      const res = await axios.get("posts/timeline/626e07c78f4c530becc4d628");
+      console.log(res);
+      //sets posts from the responses data
+      setPosts(res.data);
     };
-    console.log(res);
+    fetchPosts();
+    
   }, [])
 
   return (
     <div className='feed'>
-      <input type="text" onChange={e => setText(e.target.value)}/>
 
       <div className="feed-wrapper">
         <Share />
-        {/* {Posts.map((p) => (
+        {posts.map((p) => (
           <Post key={p.id} post={p}/>
-        ))} */}
+        ))}
     
       </div>
 

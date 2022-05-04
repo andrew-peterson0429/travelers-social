@@ -89,7 +89,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Get timeline posts
-router.get("/timeline/:userId", async (req,res) => {
+router.post("/timeline/:userId", async (req,res) => {
     try {
         const currentUser = await User.findById(req.params.userId);
         // Adds all posts from currentUser to array by their id
@@ -104,7 +104,7 @@ router.get("/timeline/:userId", async (req,res) => {
         );
         // Takes all friendsPosts and concats with userPosts
         res.status(200).json(userPosts.concat(...friendPosts));
-    } catch {
+    } catch(err) {
         // Respond with internal server error
         res.status(500).json(err);
     }
